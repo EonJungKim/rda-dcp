@@ -48,7 +48,6 @@ public class SysLogDAO extends EgovComAbstractDAO{
 	public void logInsertSysLogSummary() {
 		insert("SysLog.logInsertSysLogSummary", null);
 		delete("SysLog.logDeleteSysLogSummary", null);
-		
 	}
 
 	/**

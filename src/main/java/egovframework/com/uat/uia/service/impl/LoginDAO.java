@@ -36,8 +36,8 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * @return LoginVO
 	 * @exception Exception
 	 */
-    public LoginVO actionLoginByEsntlId(LoginVO vo) throws Exception {
-    	return (LoginVO)selectOne("LoginUsr.ssoLoginByEsntlId", vo);
+    public LoginVO actionLoginByEsntlId(LoginVO vo) {
+    	return selectOne("LoginUsr.ssoLoginByEsntlId", vo);
     }
 
 	/**
@@ -47,7 +47,8 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * @exception Exception
 	 */
     public LoginVO actionLogin(LoginVO vo) throws Exception {
-    	return (LoginVO)selectOne("LoginUsr.actionLogin", vo);
+		System.out.println(vo);
+    	return selectOne("LoginUsr.actionLogin", vo);
     }
 
     /**
@@ -56,9 +57,8 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * @return LoginVO
 	 * @exception Exception
 	 */
-    public LoginVO actionCrtfctLogin(LoginVO vo) throws Exception {
-
-    	return (LoginVO)selectOne("LoginUsr.actionCrtfctLogin", vo);
+    public LoginVO actionCrtfctLogin(LoginVO vo) {
+    	return selectOne("LoginUsr.actionCrtfctLogin", vo);
     }
 
     /**
@@ -68,8 +68,7 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * @exception Exception
 	 */
     public LoginVO searchId(LoginVO vo) throws Exception {
-
-    	return (LoginVO)selectOne("LoginUsr.searchId", vo);
+    	return selectOne("LoginUsr.searchId", vo);
     }
 
     /**
@@ -78,9 +77,8 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * @return LoginVO
 	 * @exception Exception
 	 */
-    public LoginVO searchPassword(LoginVO vo) throws Exception {
-
-    	return (LoginVO)selectOne("LoginUsr.searchPassword", vo);
+    public LoginVO searchPassword(LoginVO vo) {
+    	return selectOne("LoginUsr.searchPassword", vo);
     }
 
     /**
@@ -97,19 +95,17 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * 로그인인증제한 내역을 조회한다.
 	 * @param vo LoginVO
 	 * @return LoginVO
-	 * @exception Exception
 	 */
-	public Map<?,?> selectLoginIncorrect(LoginVO vo) throws Exception {
-    	return (Map<?,?>)selectOne("LoginUsr.selectLoginIncorrect", vo);
+	public Map<?,?> selectLoginIncorrect(LoginVO vo) {
+    	return selectOne("LoginUsr.selectLoginIncorrect", vo);
     }
 
     /**
 	 * 로그인인증제한 내역을 업데이트 한다.
-	 * @param vo LoginVO
-	 * @return vod
-	 * @exception Exception
+	 * @param map LoginVO
+	 * @return void
 	 */
-    public void updateLoginIncorrect(Map<?,?> map) throws Exception {
+    public void updateLoginIncorrect(Map<?,?> map) {
     	update("LoginUsr.updateLoginIncorrect"+map.get("USER_SE"), map);
     }
     
@@ -117,9 +113,8 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * 비밀번호를 수정한후 경과한 날짜를 조회한다.
 	 * @param vo LoginVO
 	 * @return LoginVO
-	 * @exception Exception
 	 */
-    public int selectPassedDayChangePWD(LoginVO vo) throws Exception {
+    public int selectPassedDayChangePWD(LoginVO vo) {
     	return selectOne("LoginUsr.selectPassedDayChangePWD", vo);
     }
 
@@ -127,10 +122,8 @@ public class LoginDAO extends EgovComAbstractDAO {
 	 * 디지털원패스 인증 회원 조회한다.
 	 * @param id
 	 * @return LoginVO
-	 * @exception Exception
 	 */
-    public LoginVO onepassLogin(String id) throws Exception {
-    	return (LoginVO)selectOne("LoginUsr.onepassLogin", id);
+    public LoginVO onepassLogin(String id) {
+    	return selectOne("LoginUsr.onepassLogin", id);
     }
-
 }

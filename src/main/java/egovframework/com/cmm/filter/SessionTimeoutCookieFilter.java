@@ -54,28 +54,17 @@ public class SessionTimeoutCookieFilter implements Filter{
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         long serverTime = System.currentTimeMillis();
-        long sessionExpireTime = serverTime + httpRequest.getSession().getMaxInactiveInterval() * 1000;
-        Cookie cookie = new Cookie("egovLatestServerTime", "" + serverTime);
+        long sessionExpireTime = serverTime + httpRequest.getSession().getMaxInactiveInterval() * 1000L;
+        Cookie cookie = new Cookie("egovLatestServerTime", String.valueOf(serverTime));
         boolean secure = request.isSecure();
         if ( secure ) cookie.setSecure(true);
         cookie.setHttpOnly(true);
         cookie.setPath("/");
         httpResponse.addCookie(cookie);
-        cookie = new Cookie("egovExpireSessionTime", "" + sessionExpireTime);
+        cookie = new Cookie("egovExpireSessionTime", String.valueOf(sessionExpireTime));
         if ( secure ) cookie.setSecure(true);
         cookie.setHttpOnly(true);
         cookie.setPath("/");
-        
-//        Date dateServer = new java.util.Date(serverTime);
-//        Date dateExpiry = new java.util.Date(sessionExpireTime);
-//        SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-//        String serverYMD = format.format(dateServer);
-//        String expiryYMD = format.format(dateExpiry);
-        //System.out.println("=====>>> serverYMD = "+serverYMD);
-        //System.out.println("=====>>> expiryYMD = "+expiryYMD);
-        //System.out.println("=====>>> server TimeStamp = "+serverTime);
-        //System.out.println("=====>>> expire TimeStamp = "+sessionExpireTime);
         
         httpResponse.addCookie(cookie);
 

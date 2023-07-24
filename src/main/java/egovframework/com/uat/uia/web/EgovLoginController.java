@@ -145,19 +145,19 @@ public class EgovLoginController {
 
 		// 1. 로그인인증제한 활성화시 
 		if( egovLoginConfig.isLock()){
-		    Map<?,?> mapLockUserInfo = (EgovMap)loginService.selectLoginIncorrect(loginVO);
-		    if(mapLockUserInfo != null){			
+		    Map<?,?> mapLockUserInfo = loginService.selectLoginIncorrect(loginVO);
+		    if (mapLockUserInfo != null) {
 				//2.1 로그인인증제한 처리
 				String sLoginIncorrectCode = loginService.processLoginIncorrect(loginVO, mapLockUserInfo);
-				if(!sLoginIncorrectCode.equals("E")){
-					if(sLoginIncorrectCode.equals("L")){
+				if (!sLoginIncorrectCode.equals("E")) {
+					if (sLoginIncorrectCode.equals("L")) {
 						model.addAttribute("loginMessage", egovMessageSource.getMessageArgs("fail.common.loginIncorrect", new Object[] {egovLoginConfig.getLockCount(),request.getLocale()}));
-					}else if(sLoginIncorrectCode.equals("C")){
+					} else if (sLoginIncorrectCode.equals("C")) {
 						model.addAttribute("loginMessage", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
 					}
 					return "redirect:/uat/uia/egovLoginUsr.do";
 				}
-		    }else{
+		    } else {
 		    	model.addAttribute("loginMessage", egovMessageSource.getMessage("fail.common.login",request.getLocale()));
 		    	return "redirect:/uat/uia/egovLoginUsr.do";
 		    }
@@ -167,7 +167,7 @@ public class EgovLoginController {
 		LoginVO resultVO = loginService.actionLogin(loginVO);
 		String userIp = EgovClntInfo.getClntIP(request);
 		resultVO.setIp(userIp);
-		
+
 		// 3. 일반 로그인 처리
 		// 2022.11.11 시큐어코딩 처리
 		if (resultVO.getId() != null && !resultVO.getId().equals("")) {

@@ -91,7 +91,6 @@
 	<select id="actionLogin" resultMap="login">
 		<!-- 일반회원 -->
 		<if test="userSe != null and userSe == 'GNR'">
-			
 			SELECT mber_id AS id
 			     , mber_nm AS name
 			     , ihidNum AS ihidNum

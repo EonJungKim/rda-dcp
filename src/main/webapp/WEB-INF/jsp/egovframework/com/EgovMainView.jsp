@@ -11,20 +11,17 @@
 <script language="javascript" src="<c:url value='/js/egovframework/com/main.js' />"></script>
 <script language="javascript">
 function chk_all(val) {
-
 	var arr_chk = document.getElementsByName("chk");
 
-		if (val == "Y") {
-
-			for(i=0;i< arr_chk.length; i++) {
-				arr_chk[i].checked =true;
-			}
+	if (val == "Y") {
+		for(i=0;i< arr_chk.length; i++) {
+			arr_chk[i].checked =true;
 		}
-		else if(val == "N") {
-			for(i=0;i< arr_chk.length; i++) {
-				arr_chk[i].checked =false;
-			}
+	} else if(val == "N") {
+		for(i=0;i< arr_chk.length; i++) {
+			arr_chk[i].checked =false;
 		}
+	}
 }
 
 </script>

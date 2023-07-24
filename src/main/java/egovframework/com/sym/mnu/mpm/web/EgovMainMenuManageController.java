@@ -223,11 +223,10 @@ public class EgovMainMenuManageController {
     		ModelMap model)
             throws Exception {
 
-    	LoginVO user =
-			(LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    	LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 
 		// 미인증 사용자에 대한 보안처리
-    	if(user == null) {
+    	if (user == null) {
 			return "index";
     	}
 
@@ -246,12 +245,9 @@ public class EgovMainMenuManageController {
 		LOGGER.debug("## selectMainMenuHome ## getSUserId 2: {}", user.getId());
 		LOGGER.debug("## selectMainMenuHome ## getUniqId  2: {}", user.getUniqId());
 
-		if (!user.getId().equals("")) {
-        	// 메인 페이지 이동
+		if (!user.getId().equals("")) {	// 메인 페이지 이동
 			return "egovframework/com/EgovMainView";
-        
-        } else {
-        	// 오류 페이지 이동
+        } else {	// 오류 페이지 이동
         	return "egovframework/com/cmm/error/egovError";
         }
     }

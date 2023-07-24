@@ -44,10 +44,7 @@ public class EgovSysLogAspect {
 		try {
 			stopWatch.start();
 
-			Object retValue = joinPoint.proceed();
-			return retValue;
-		} catch (Throwable e) {
-			throw e;
+			return joinPoint.proceed();
 		} finally {
 			stopWatch.stop();
 
@@ -61,7 +58,7 @@ public class EgovSysLogAspect {
 
 	    	/* Authenticated  */
 	        Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-	    	if(isAuthenticated.booleanValue()) {
+	    	if(isAuthenticated) {
 				LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 				uniqId = (user == null || user.getUniqId() == null) ? "" : user.getUniqId();
 			    ip = (user == null || user.getIp() == null) ? "" : user.getIp();
@@ -75,9 +72,7 @@ public class EgovSysLogAspect {
 			sysLog.setRqesterIp(ip);
 
 			sysLogService.logInsertSysLog(sysLog);
-
 		}
-
 	}
 
 	/**
@@ -95,10 +90,7 @@ public class EgovSysLogAspect {
 		try {
 			stopWatch.start();
 
-			Object retValue = joinPoint.proceed();
-			return retValue;
-		} catch (Throwable e) {
-			throw e;
+			return joinPoint.proceed();
 		} finally {
 			stopWatch.stop();
 
@@ -126,9 +118,7 @@ public class EgovSysLogAspect {
 			sysLog.setRqesterIp(ip);
 
 			sysLogService.logInsertSysLog(sysLog);
-
 		}
-
 	}
 
 	/**
@@ -146,10 +136,7 @@ public class EgovSysLogAspect {
 		try {
 			stopWatch.start();
 
-			Object retValue = joinPoint.proceed();
-			return retValue;
-		} catch (Throwable e) {
-			throw e;
+			return joinPoint.proceed();
 		} finally {
 			stopWatch.stop();
 
@@ -163,7 +150,7 @@ public class EgovSysLogAspect {
 
 	    	/* Authenticated  */
 	        Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-	    	if(isAuthenticated.booleanValue()) {
+	    	if(isAuthenticated) {
 				LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 				uniqId = (user == null || user.getUniqId() == null) ? "" : user.getUniqId();
 			    ip = (user == null || user.getIp() == null) ? "" : user.getIp();
@@ -177,9 +164,7 @@ public class EgovSysLogAspect {
 			sysLog.setRqesterIp(ip);
 
 			sysLogService.logInsertSysLog(sysLog);
-
 		}
-
 	}
 
 	/**
@@ -197,10 +182,7 @@ public class EgovSysLogAspect {
 		try {
 			stopWatch.start();
 
-			Object retValue = joinPoint.proceed();
-			return retValue;
-		} catch (Throwable e) {
-			throw e;
+			return joinPoint.proceed();
 		} finally {
 			stopWatch.stop();
 
@@ -214,7 +196,7 @@ public class EgovSysLogAspect {
 
 	    	/* Authenticated  */
 	        Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-	    	if(isAuthenticated.booleanValue()) {
+	    	if(isAuthenticated) {
 				LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 				uniqId = (user == null || user.getUniqId() == null) ? "" : user.getUniqId();
 				ip = (user == null || user.getIp() == null) ? "" : user.getIp();
@@ -228,9 +210,6 @@ public class EgovSysLogAspect {
 			sysLog.setRqesterIp(ip);
 
 			sysLogService.logInsertSysLog(sysLog);
-
 		}
-
 	}
-
 }
